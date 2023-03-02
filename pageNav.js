@@ -46,3 +46,14 @@ const schedulePageBtn = document.getElementById("schedulePageBtn");
 schedulePageBtn.addEventListener("click", () => toggle('main-menu','schedule-page'));
 const historyPageBtn = document.getElementById("historyPageBtn");
 historyPageBtn.addEventListener("click", () => toggle('main-menu','history-page'));
+
+const teamMainBtn = document.getElementById("teamMainBtn");
+teamMainBtn.addEventListener("click", () => toggle('team-page','main-menu'));
+const leagueMainBtn = document.getElementById("leagueMainBtn");
+leagueMainBtn.addEventListener("click", () => toggle('league-page','main-menu'));
+const transferMainBtn = document.getElementById("transferMainBtn");
+transferMainBtn.addEventListener("click", () => toggle('transfer-page','main-menu'));
+const scheduleMainBtn = document.getElementById("scheduleMainBtn");
+scheduleMainBtn.addEventListener("click", () => toggle('schedule-page','main-menu'));
+const historyMainBtn = document.getElementById("historyMainBtn");
+historyMainBtn.addEventListener("click", () => toggle('history-page','main-menu'));

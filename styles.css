@@ -1,3 +1,25 @@
 .hide {
     display: none;
 }
+
+body {
+    margin: 0;
+}
+
+header {
+    background: #85997D;
+    background: -webkit-linear-gradient(top left, #85997D, #AD088C);
+    background: -moz-linear-gradient(top left, #85997D, #AD088C);
+    background: linear-gradient(to bottom right, #85997D, #AD088C);
+    margin: 0;
+    height: 100px;
+}
+
+h1 {
+    padding: 0;
+    color: white;
+    display: block;
+    text-align: center;
+    margin-block-start: 0;
+    margin-block-end:0;
+}

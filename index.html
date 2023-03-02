@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSFootball</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>JSFootball</h1>
+    </header>
+
+    <main>
+        <section id="landing-page" class="section-box">
+            <button type="button" id="start-game">Start New Game</button>
+            <button type="button">Load Saved Game</button>
+        </section>
+
+        <section id="team-selection" class="section-box hide">
+            <h2>Select a team:</h2>
+            <select name="leagues" id="league-dropdown">
+                <option value="">--Leagues--</option>
+                <option value="epl">Premier League</option>
+                <option value="champ">Championship</option>
+                <option value="efl1">League 1</option>
+                <option value="efl2">League 2</option>
+            </select>
+            <select name="teams" id="team-dropdown">
+                <option value="">--Teams--</option>
+            </select>
+        </section>
+
+        <section id="main-menu" class="section-box hide">
+            <h2>Team: <span id="team-name">Arsenal</span></h2>
+            <button type="button">Team</button>
+            <button type="button">League Table</button>
+            <button type="button">Transfer Market</button>
+            <button type="button">Schedule</button>
+            <button type="button">Manager History</button>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+<script src="pageNav.js"></script>
+<!-- <script src="engine.js"></script> -->
+
+</html>

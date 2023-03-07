@@ -36,3 +36,41 @@ button {
     font-size: 2rem;
     color: blue;
 }
+
+#buttonBox {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#time {
+    text-align: center;
+    color: white;
+}
+
+#teamLayer {
+    color: white;
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+#scoreDiv {
+    color: white;
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+}
+
+#eventLayer {
+    color: white;
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+}
+

@@ -14,8 +14,10 @@
 
     <main>
         <section id="landing-page" class="section-box">
-            <button type="button" id="start-game">Start New Game</button>
-            <button type="button">Load Saved Game</button>
+            <div id="buttonBox">
+                <button type="button" id="start-game">Start New Game</button>
+                <button type="button">Load Saved Game</button>
+            </div>
         </section>
 
         <section id="team-selection" class="section-box hide">
@@ -34,12 +36,18 @@
         </section>
 
         <section id="main-menu" class="section-box hide">
-            <h2>Team: <span id="team-name"></span></h2>
-            <button type="button" id="teamPageBtn">Team</button>
-            <button type="button" id="leaguePageBtn">League Table</button>
-            <button type="button" id="transferPageBtn">Transfer Market</button>
-            <button type="button" id="schedulePageBtn">Schedule</button>
-            <button type="button" id="historyPageBtn">Manager History</button>
+            <div>
+                <h2>Team: <span id="team-name"></span></h2>
+                <button type="button" id="teamPageBtn">Team</button>
+                <button type="button" id="leaguePageBtn">League Table</button>
+                <button type="button" id="transferPageBtn">Transfer Market</button>
+                <button type="button" id="schedulePageBtn">Schedule</button>
+                <button type="button" id="historyPageBtn">Manager History</button>
+                <button type="button" id="nextGameBtn">Next Game</button>
+            </div>
+            <div>
+
+            </div>
         </section>
 
         <section id="team-page" class="hide">
@@ -57,6 +65,27 @@
         <section id="history-page" class="hide">
             <button type="button" id="historyMainBtn">Main Menu</button>
         </section>
+
+        <section id="game-screen" class="hide">
+            <h2 id="time">0</h2>
+            <div id="teamLayer">
+                <h2 id="homeTeam">Home Team</h2>
+                <div id="scoreDiv">
+                    <h2 id="homeScore">0</h2>
+                    <h2>:</h2>
+                    <h2 id="awayScore">0</h2>
+                </div>
+                <h2 id="awayTeam">Away Team</h2>
+            </div>
+            <div id="eventLayer">   
+                <p id="homeScorer"></p>
+                <p id="awayScorer"></p>
+            </div>
+            <div id="buttonBox">
+                <button type="button" id="startGame">Start Game</button>
+                <button type="button" id="nextMainBtn" class="hide">Main Menu</button>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -64,7 +93,9 @@
     </footer>
 </body>
 
+<script src="game.js"></script>
+<script src="engine.js"></script>
+
 <script src="pageNav.js"></script>
-<!-- <script src="engine.js"></script> -->
 
 </html>

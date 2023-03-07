@@ -46,6 +46,8 @@ const schedulePageBtn = document.getElementById("schedulePageBtn");
 schedulePageBtn.addEventListener("click", () => toggle('main-menu','schedule-page'));
 const historyPageBtn = document.getElementById("historyPageBtn");
 historyPageBtn.addEventListener("click", () => toggle('main-menu','history-page'));
+const nextGameBtn = document.getElementById("nextGameBtn");
+nextGameBtn.addEventListener("click", () => toggle('main-menu','game-screen'));
 
 const teamMainBtn = document.getElementById("teamMainBtn");
 teamMainBtn.addEventListener("click", () => toggle('team-page','main-menu'));
@@ -57,3 +59,9 @@ const scheduleMainBtn = document.getElementById("scheduleMainBtn");
 scheduleMainBtn.addEventListener("click", () => toggle('schedule-page','main-menu'));
 const historyMainBtn = document.getElementById("historyMainBtn");
 historyMainBtn.addEventListener("click", () => toggle('history-page','main-menu'));
+const nextMainBtn = document.getElementById("nextMainBtn");
+nextMainBtn.addEventListener("click", () => {
+    toggle('game-screen','main-menu');
+    document.getElementById("startGame").classList.remove("hide");
+    document.getElementById("nextMainBtn").classList.add("hide");
+});

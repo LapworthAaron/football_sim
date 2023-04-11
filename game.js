@@ -1,52 +1,68 @@
-const home = [
-    {pos : "gk", name: "kepa",
-          score: 600},
-    {pos : "def", name: "james",
-            score: 700},
-    {pos : "def", name: "silva",
-            score: 654},
-    {pos : "def", name: "chilwell",
-            score: 544},
-    {pos : "def", name: "fofana",
-            score: 691},
-    {pos : "mid", name: "ziyech",
-            score: 510},
-    {pos : "mid", name: "pulisic",
-            score: 495},
-    {pos : "mid", name: "kanté",
-            score: 789},
-    {pos : "mid", name: "mount",
-            score: 632},
-    {pos : "att", name: "sterling",
-            score: 801},
-    {pos : "att", name: "felix",
-            score: 650}
-];
+// const home = [
+//     {pos : "gk", name: "kepa",
+//           score: 600},
+//     {pos : "def", name: "james",
+//             score: 700},
+//     {pos : "def", name: "silva",
+//             score: 654},
+//     {pos : "def", name: "chilwell",
+//             score: 544},
+//     {pos : "def", name: "fofana",
+//             score: 691},
+//     {pos : "mid", name: "ziyech",
+//             score: 510},
+//     {pos : "mid", name: "pulisic",
+//             score: 495},
+//     {pos : "mid", name: "kanté",
+//             score: 789},
+//     {pos : "mid", name: "mount",
+//             score: 632},
+//     {pos : "att", name: "sterling",
+//             score: 801},
+//     {pos : "att", name: "felix",
+//             score: 650}
+// ];
 
-const away = [
-    {pos : "gk", name: "ederson",
-          score: 721},
-    {pos : "def", name: "walker",
-            score: 700},
-    {pos : "def", name: "dias",
-            score: 723},
-    {pos : "def", name: "ake",
-            score: 620},
-    {pos : "def", name: "laporte",
-            score: 691},
-    {pos : "mid", name: "grealish",
-            score: 680},
-    {pos : "mid", name: "silva",
-            score: 756},
-    {pos : "mid", name: "de bruyne",
-            score: 950},
-    {pos : "mid", name: "foden",
-            score: 810},
-    {pos : "att", name: "haaland",
-            score: 801},
-    {pos : "att", name: "alvarez",
-            score: 690}
-]
+// const away = [
+//     {pos : "gk", name: "ederson",
+//           score: 721},
+//     {pos : "def", name: "walker",
+//             score: 700},
+//     {pos : "def", name: "dias",
+//             score: 723},
+//     {pos : "def", name: "ake",
+//             score: 620},
+//     {pos : "def", name: "laporte",
+//             score: 691},
+//     {pos : "mid", name: "grealish",
+//             score: 680},
+//     {pos : "mid", name: "silva",
+//             score: 756},
+//     {pos : "mid", name: "de bruyne",
+//             score: 950},
+//     {pos : "mid", name: "foden",
+//             score: 810},
+//     {pos : "att", name: "haaland",
+//             score: 801},
+//     {pos : "att", name: "alvarez",
+//             score: 690}
+// ]
+
+let home = [];
+let away = [];
+
+loadGameData = (team) => {
+    let roundCounter = round;
+    let temp = fixtures.filter(item => 
+        item.round === roundCounter && (item.home === team || item.away === team));
+    // if team === temp[0].home ? : ;
+    home = players.filter(item => item.club === temp[0].home && item.pos !== "S");
+    away = players.filter(item => item.club === temp[0].away && item.pos !== "S");
+    console.log(home);
+    console.log(away);
+    document.getElementById("homeTeam").innerText = temp[0].home;
+    document.getElementById("awayTeam").innerText = temp[0].away;
+}
 
 runGame = (homeObj, awayObj) => {
     var count = 0;

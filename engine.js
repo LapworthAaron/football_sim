@@ -1,53 +1,3 @@
-// const home = [
-//     {pos : "gk", name: "kepa",
-//           score: 600},
-//     {pos : "def", name: "james",
-//             score: 700},
-//     {pos : "def", name: "silva",
-//             score: 654},
-//     {pos : "def", name: "chilwell",
-//             score: 544},
-//     {pos : "def", name: "fofana",
-//             score: 691},
-//     {pos : "mid", name: "ziyech",
-//             score: 510},
-//     {pos : "mid", name: "pulisic",
-//             score: 495},
-//     {pos : "mid", name: "kanté",
-//             score: 789},
-//     {pos : "mid", name: "mount",
-//             score: 632},
-//     {pos : "att", name: "sterling",
-//             score: 801},
-//     {pos : "att", name: "felix",
-//             score: 650}
-// ];
-
-// const away = [
-//     {pos : "gk", name: "ederson",
-//           score: 721},
-//     {pos : "def", name: "walker",
-//             score: 700},
-//     {pos : "def", name: "dias",
-//             score: 723},
-//     {pos : "def", name: "ake",
-//             score: 620},
-//     {pos : "def", name: "laporte",
-//             score: 691},
-//     {pos : "mid", name: "grealish",
-//             score: 680},
-//     {pos : "mid", ame: "silva",
-//             score: 756},
-//     {pos : "mid", name: "de bruyne",
-//             score: 950},
-//     {pos : "mid", name: "foden",
-//             score: 810},
-//     {pos : "att", name: "haaland",
-//             score: 801},
-//     {pos : "att", name: "alvarez",
-//             score: 690}
-// ]
-
 const playerVolume = [
     {players: 0, lower: 0,
          upper: 0.05},
@@ -82,7 +32,7 @@ randomNum = (skew) => {
     return num;
 }
 
-// get volume of players for each attack play
+// get volume of players for each attack play (att or def)
 playerVol = () => {
     let rand = Math.random();
     let players = 0;
@@ -115,7 +65,7 @@ pickPlayers = (num,arr,team) => {
 getTotal = (arr) => {
     let total = 0;
     arr.forEach(number => {
-        total += number.score;
+        total += number.rating;
     })
     return total;
 }
@@ -135,7 +85,7 @@ score = (att, def, team) => {
 // const fs = require("fs");
 //chances based on midfield score
 chancesGenerator = (team,num) => {
-    const teamMid = team.filter(item => item.pos === "mid");
+    const teamMid = team.filter(item => item.pos === "M");
     const teamScore = getTotal(teamMid) / teamMid.length / 1000;
     // let tempArr = [];
     // for (let i = 0; i<=1000; i++) {
@@ -182,31 +132,11 @@ attackPlay = (attTeam, defTeam, chancesObj) => {
     return chancesObj;
 }
 
-// runGame = (homeObj, awayObj) => {
-//     var count = 0;
-//     var interval = setInterval(function(){
-//         if (count === 90){
-//             clearInterval(interval); // Stopping the counter when reaching 91.
-//             return ;
-//         }
-//         homeObj.forEach(item => {
-//             if (item.time === count && item.goal ==="GOAL") {
-//                 console.log(`${count} - ${JSON.stringify(item.goal)} - ${JSON.stringify(item.scorer.name)}`)
-//             }
-//         });
-//         awayObj.forEach(item => {
-//             if (item.time === count && item.goal ==="GOAL") {
-//                 console.log(`${count} - ${JSON.stringify(item.goal)} - ${JSON.stringify(item.scorer.name)}`)
-//             }
-//         });
-//         count++;
-//     }, 100);
-// }
-
 // GAME
 // get home and away teams objects
 game = (homeT, awayT) => {
     // calculate game chances
+    console.log(homeT)
     const homeChances = chancesGenerator(homeT,1);
     const awayChances = chancesGenerator(awayT,2);
     // calculate times for shots for each team (create object)
@@ -228,8 +158,5 @@ game = (homeT, awayT) => {
 
     
 }
-
-// const temp = game(home, away);
-// console.log(temp);
 
 // Randomly generate yellow and red cards for each team

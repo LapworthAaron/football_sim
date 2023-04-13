@@ -88,7 +88,10 @@ teamPageBtn.addEventListener("click", () => {
     teamView(teamSelected);
 });
 const leaguePageBtn = document.getElementById("leaguePageBtn");
-leaguePageBtn.addEventListener("click", () => toggle('main-menu','league-page'));
+leaguePageBtn.addEventListener("click", () => {
+    toggle('main-menu','league-page');
+    showLeague();
+});
 
 const transferPageBtn = document.getElementById("transferPageBtn");
 transferPageBtn.addEventListener("click", () => toggle('main-menu','transfer-page'));
@@ -104,9 +107,10 @@ historyPageBtn.addEventListener("click", () => toggle('main-menu','history-page'
 const nextGameBtn = document.getElementById("nextGameBtn");
 nextGameBtn.addEventListener("click", () => {
     toggle('main-menu','game-screen');
-    // loadGameData(teamSelected);
-    let otherFixtures = fixtures.filter(item => item.round === round);
-    otherFixtures.forEach(item => loadGameData(item.home, item.away));
+    home = [];
+    away = [];
+    let allFixtures = fixtures.filter(item => item.round === round);
+    allFixtures.forEach(item => loadGameData(item.home, item.away));
 });
 
 const teamMainBtn = document.getElementById("teamMainBtn");
@@ -130,6 +134,7 @@ nextResultsBtn.addEventListener("click", () => {
     toggle('game-screen','results-screen');
     document.getElementById("startGame").classList.remove("hide");
     document.getElementById("nextResultsBtn").classList.add("hide");
+    showResults();
 });
 
 const resultsMainBtn = document.getElementById("resultsMainBtn");

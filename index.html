@@ -67,6 +67,22 @@
         </section>
 
         <section id="league-page" class="hide">
+            <table id="leagueTable">
+                <thead>
+                    <tr>
+                        <td>Position</td>
+                        <td>Team</td>
+                        <td>P</td>
+                        <td>W</td>
+                        <td>D</td>
+                        <td>L</td>
+                        <td>GF</td>
+                        <td>GA</td>
+                        <td>GD</td>
+                        <td>Pts</td>
+                    </tr>
+                </thead>
+            </table>
             <button type="button" id="leagueMainBtn">Main Menu</button>
         </section>
         <section id="transfer-page" class="hide">
@@ -101,6 +117,10 @@
             </div>
         </section>
         <section id="results-screen" class="hide">
+            <table id="resultsTable">
+                <thead id="resultsHeader">
+                </thead>
+            </table>
             <button type="button" id="resultsMainBtn">Main Menu</button>
         </section>
     </main>
@@ -116,6 +136,8 @@
 <script src="main.js"></script>
 
 <script src="fixture.js"></script>
+<script src="results.js"></script>
+<script src="leagues.js"></script>
 
 <script src="engine.js"></script>
 <script src="game.js"></script>

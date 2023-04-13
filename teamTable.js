@@ -48,7 +48,7 @@ const teamView = (team) => {
         tr.append(playerWage);
     });
 
-    teamBody.addEventListener('click',(event) => tableRowSelect(event, team));
+    teamBody.addEventListener('click', (event) => tableRowSelect(event, team));
 }
 
 const tableRowSelect = (event, team) => {

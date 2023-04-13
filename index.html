@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/images/football.ico">
     <title>JSFootball</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -52,7 +53,19 @@
 
         <section id="team-page" class="hide">
             <button type="button" id="teamMainBtn">Main Menu</button>
+            <table id="teamTable">
+                <thead id="tableHeader">
+                    <tr>
+                        <th>Name</th>
+                        <th>Pos</th>
+                        <th>Rating</th>
+                        <th>Value</th>
+                        <th>Wage</th>
+                    </tr>
+                </thead>
+            </table>
         </section>
+
         <section id="league-page" class="hide">
             <button type="button" id="leagueMainBtn">Main Menu</button>
         </section>
@@ -83,8 +96,12 @@
             </div>
             <div id="buttonBox">
                 <button type="button" id="startGame">Start Game</button>
-                <button type="button" id="nextMainBtn" class="hide">Main Menu</button>
+                <!-- <button type="button" id="nextMainBtn" class="hide">Main Menu</button> -->
+                <button type="button" id="nextResultsBtn" class="hide">Results</button>
             </div>
+        </section>
+        <section id="results-screen" class="hide">
+            <button type="button" id="resultsMainBtn">Main Menu</button>
         </section>
     </main>
 
@@ -93,12 +110,15 @@
     </footer>
 </body>
 
-<script src="game.js"></script>
-<script src="engine.js"></script>
-<script src="player.js"></script>
-<script src="teams.js"></script>
+<script src="playerClass.js"></script>
+<script src="teamClass.js"></script>
+
+<script src="main.js"></script>
+
 <script src="fixture.js"></script>
 
-<script src="pageNav.js"></script>
+<script src="engine.js"></script>
+<script src="game.js"></script>
+<script src="teamTable.js"></script>
 
 </html>

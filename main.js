@@ -8,20 +8,35 @@ fetch("./playerList.json")
     .then(response => {
         return response.json();
     })
-    .then(data => players = data);
+    .then(data => {
+        for (let i = 0; i < data.length; i++) {
+            players.push(new Player(
+                data[i].id,
+                data[i].name,
+                data[i].age,
+                data[i].club,
+                data[i].pos,
+                data[i].rating,
+                data[i].value,
+                data[i].wage,
+                data[i].join,
+                data[i].until
+            ));
+        }
+    });
 
 fetch("./teams.json")
     .then(response => {
         return response.json();
     })
     .then(data => {
-        teams = data;
+        for (let i = 0; i < data.length; i++) {
+            teams.push(new Team(i, data[i].league, data[i].team, 2020));
+        }
     });
 
 const startBtn = document.getElementById('start-game');
 startBtn.addEventListener("click", () => toggle('landing-page','team-selection'));
-
-
 
 const toggle = (current,newpage) => {
     let current_ = document.getElementById(current);
@@ -89,7 +104,9 @@ historyPageBtn.addEventListener("click", () => toggle('main-menu','history-page'
 const nextGameBtn = document.getElementById("nextGameBtn");
 nextGameBtn.addEventListener("click", () => {
     toggle('main-menu','game-screen');
-    loadGameData(teamSelected);
+    // loadGameData(teamSelected);
+    let otherFixtures = fixtures.filter(item => item.round === round);
+    otherFixtures.forEach(item => loadGameData(item.home, item.away));
 });
 
 const teamMainBtn = document.getElementById("teamMainBtn");
@@ -107,9 +124,13 @@ scheduleMainBtn.addEventListener("click", () => toggle('schedule-page','main-men
 const historyMainBtn = document.getElementById("historyMainBtn");
 historyMainBtn.addEventListener("click", () => toggle('history-page','main-menu'));
 
-const nextMainBtn = document.getElementById("nextMainBtn");
-nextMainBtn.addEventListener("click", () => {
-    toggle('game-screen','main-menu');
+const nextResultsBtn = document.getElementById("nextResultsBtn");
+nextResultsBtn.addEventListener("click", () => {
+    round++;
+    toggle('game-screen','results-screen');
     document.getElementById("startGame").classList.remove("hide");
-    document.getElementById("nextMainBtn").classList.add("hide");
+    document.getElementById("nextResultsBtn").classList.add("hide");
 });
+
+const resultsMainBtn = document.getElementById("resultsMainBtn");
+resultsMainBtn.addEventListener("click", () => toggle('results-screen','main-menu'));

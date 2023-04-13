@@ -1,15 +1,18 @@
-// class for teams
+// class for players
 // will hold stats objects
 
 class Player {
-    constructor(key, firstName, lastName, position, rating, value) {
-        this.key = key,
-        this.firstName = nfirstNameme;
-        this.lastName = lastName;
+    constructor(id, name, age, club, position, rating, value, wage, joined, until) {
+        this.id = id,
+        this.name = name;
         this.age = age;
+        this.club = club;
         this.position = position,
         this.rating = rating,
         this.value = value,
+        this.wage = wage,
+        this.joined = joined,
+        this.until = until
         this.stats = {
             goals: 0,
             yellowCards: 0,
@@ -20,7 +23,7 @@ class Player {
 
     //takes how many goals to add
     addGoals(goals) {
-        return this.stats.goals + goals;
+        this.stats.goals += goals;
     }
 
     //takes how many goals to add
@@ -33,19 +36,19 @@ class Player {
         this.stats.redCards++;
     }
 
-    //takes how many goals to add
-    addGoals() {
+    //takes how many games to add
+    addGames() {
         this.stats.games++;
     }
 
     //increase a players rating by a value
     increaseRating(value) {
-        return this.rating + value;
+        this.rating += value;
     }
 
     //increase a players value by a value
     increaseRating(value) {
-        return this.value + value;
+        this.value += value;
     }
 
     //takes how many goals to add

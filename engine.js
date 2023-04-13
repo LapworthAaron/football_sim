@@ -18,11 +18,9 @@ const playerVolume = [
     {players: 8, lower: 0.9540000000000000001,
         upper: 0.974},
     {players: 9, lower: 0.9740000000000000001,
-        upper: 0.989},
-    {players: 10, lower: 0.9890000000000000001,
-        upper: 0.999},
-    {players: 11, lower: 0.9990000000000000001,
-         upper: 1}
+        upper: 0.99},
+    {players: 10, lower: 0.9900000000000000001,
+        upper: 1}
 ]
 
 randomNum = (skew) => {
@@ -47,10 +45,11 @@ playerVol = () => {
 // pick players involved in the attack play
 pickPlayers = (num,arr,team) => {
     let tempHome = [...arr];
-    let maxArray = 11;
+    let maxArray = num - 1;
     let chosen = [];
     for (let i = 0; i < num; i++) {
-        let tempRand = Math.floor(Math.random() * (maxArray - 1) + 1);
+
+        let tempRand = Math.floor(Math.random() * (maxArray + 1)) + 1;
         chosen.push(tempHome[tempRand]);
         tempHome.splice(tempRand,1);
         maxArray--;
@@ -85,7 +84,7 @@ score = (att, def, team) => {
 // const fs = require("fs");
 //chances based on midfield score
 chancesGenerator = (team,num) => {
-    const teamMid = team.filter(item => item.pos === "M");
+    const teamMid = team.filter(item => item.position === "M");
     const teamScore = getTotal(teamMid) / teamMid.length / 1000;
     // let tempArr = [];
     // for (let i = 0; i<=1000; i++) {
@@ -134,9 +133,8 @@ attackPlay = (attTeam, defTeam, chancesObj) => {
 
 // GAME
 // get home and away teams objects
-game = (homeT, awayT) => {
+game = (homeName, homeT, awayName, awayT) => {
     // calculate game chances
-    console.log(homeT)
     const homeChances = chancesGenerator(homeT,1);
     const awayChances = chancesGenerator(awayT,2);
     // calculate times for shots for each team (create object)
@@ -147,16 +145,13 @@ game = (homeT, awayT) => {
     // set defense bonuse for home team
     const defBns = 50;
     // set attack bonus on last 5 games
-
+    // console.log(homeT[0].club);
+    // console.log(awayT[0].club);
     // For each attack play, check for goal
     const homeChanceObj = attackPlay(homeT, awayT, homeGameChance);
     const awayChanceObj = attackPlay(awayT, homeT, awayGameChance);
 
-    // runGame(homeChanceObj, awayChanceObj);
-
-    return {homeChanceObj, awayChanceObj};
-
-    
+    return {homeName, homeChanceObj, awayName, awayChanceObj};
 }
 
 // Randomly generate yellow and red cards for each team

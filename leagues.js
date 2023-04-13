@@ -14,15 +14,14 @@ const showLeague = () => {
     const epl = teams.filter(item => item.league === 'epl').sort((a,b) => {
         if (a.points - b.points !== 0) {
             return b.points - a.points;
-        } else if (a.gd - b.gd !== 0) {
-            return b.gd - a.gd;
-        } else if (a.gf - b.gf !== 0) {
-            return b.gf - a.gf;
+        } else if ((a.scored - a.conceded) - (b.scored - b.conceded) !== 0) {
+            return (b.scored - b.conceded) - (a.scored - a.conceded);
+        } else if (a.scored - b.scored !== 0) {
+            return b.scored - a.scored;
         } else if (b.team > a.team) {
             return -1;
         };
     })
-    console.log(epl);
 
     let counter = 1;
     epl.forEach(item => {

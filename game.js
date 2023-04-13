@@ -14,7 +14,6 @@ loadGameData = (homeTeam, awayTeam) => {
 
 runGame = (homeObj, awayObj) => {
     var count = 0;
-    document.removeEventListener("click", resetGameScreen());
     var interval = setInterval(function(){
         let time = document.getElementById("time");
         if (count != 0) {

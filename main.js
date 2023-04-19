@@ -14,11 +14,12 @@ fetch("./playerList.json")
                 data[i].id,
                 data[i].name,
                 data[i].age,
-                data[i].club,
-                data[i].pos,
                 data[i].rating,
+                data[i].club,               
                 data[i].value,
                 data[i].wage,
+                data[i].team_pos,
+                data[i].pos,
                 data[i].join,
                 data[i].until
             ));
@@ -30,9 +31,35 @@ fetch("./teams.json")
         return response.json();
     })
     .then(data => {
+        const formationsArry = [
+            {"G":1,"D":4,"M":4,"F":2},
+            {"G":1,"D":5,"M":3,"F":2},
+            {"G":1,"D":3,"M":5,"F":2},
+            {"G":1,"D":4,"M":5,"F":1},
+            {"G":1,"D":5,"M":4,"F":1}
+        ];
         for (let i = 0; i < data.length; i++) {
-            teams.push(new Team(i, data[i].league, data[i].team, 2020));
-        }
+            const randNum = Math.floor(Math.random() * 5);
+            teams.push(new Team(i, data[i].league, data[i].team, 2022));
+            let temp = players.filter(element => element.club === data[i].team);
+            ["G","D","M","F"].forEach(item => {
+                let posArray = temp.filter(element => element.position === item).sort((a,b) => {
+                    let fa = a.rating,
+                        fb = b.rating;
+                    if (fa < fb) return 1;
+                    if (fa > fb) return -1;
+                    return 0
+                });
+                const posNumber = formationsArry[randNum][item];
+                for (let i = 0; i < posNumber; i++) {
+                    const indexVal = players.indexOf(posArray[i]);
+                    players[indexVal].team_position = item;
+                }
+                
+            });
+            // console.log(players.filter(element => element.club === data[i].team));
+        };
+        
     });
 
 const startBtn = document.getElementById('start-game');

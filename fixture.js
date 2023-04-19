@@ -1,10 +1,17 @@
 const seasonGenerator = () => {
-    const league = teams.filter(item => item.league === "epl").sort(function(a, b){return 0.5 - Math.random()});
+    const leagueArr = ["epl","champ","efl1","efl2"];
+
+    leagueArr.forEach(item => eachLeague(item))
+};
+
+const eachLeague = (leagueName) => {
+    const league = teams.filter(item => item.league === leagueName).sort(function(a, b){return 0.5 - Math.random()});
     
     let newLeague = league;
+    let LeagueFixtureArr = [];
     for (let round = 1; round < league.length; round++) {
         for (let i = 0; i < league.length / 2; i++) {
-            fixtures.push({
+            LeagueFixtureArr.push({
                 "round": round,
                 "home": newLeague[i].team,
                 "away": newLeague[(league.length - 1) - i].team
@@ -13,11 +20,13 @@ const seasonGenerator = () => {
         toggleTeamPos(newLeague);
     };
 
-    const reverse = fixtures.map(item => {
+    const reverse = LeagueFixtureArr.map(item => {
         return {"round":item.round + 19, "home":item.away, "away":item.home};
     });
-    fixtures = fixtures.concat(reverse);
-};
+
+    fixtures.push(...LeagueFixtureArr);
+    fixtures.push(...reverse);
+}
 
 const toggleTeamPos = (teamArray) => {
     const staticTeam = teamArray.shift();

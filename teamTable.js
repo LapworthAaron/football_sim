@@ -21,8 +21,11 @@ const teamView = (team) => {
         playerName.innerText = item.name;
         tr.append(playerName);
         const playerPos = document.createElement('td');
-        playerPos.innerText = item.position;
+        playerPos.innerText = item.team_position;
         tr.append(playerPos);
+        const bestPos = document.createElement('td');
+        bestPos.innerText = item.position;
+        tr.append(bestPos);
         const playerRating = document.createElement('td');
         playerRating.innerText = item.rating;
         tr.append(playerRating);
@@ -60,18 +63,18 @@ const tableRowSelect = (event, team) => {
     if (oldSelected && selected !== oldSelected && selectedTag === "tr" && selectedID !== "tableHeader") {
         let teamPlayers = sortPlayerArray(players, team);
         const nonTeamPlayers = players.filter(data => data.club !== team).sort((a,b) => {
-            let fa = a.position,
-                fb = b.position;
+            let fa = a.team_position,
+                fb = b.team_position;
             if (fa < fb) return -1;
             if (fa > fb) return 1;
             return 0
         });
-        let newPos = teamPlayers.find(item => item.name.replace(/\s/g, "") === selected.id).position;
-        let oldPos = teamPlayers.find(item => item.name.replace(/\s/g, "") === oldSelected.id).position;
+        let newPos = teamPlayers.find(item => item.name.replace(/\s/g, "") === selected.id).team_position;
+        let oldPos = teamPlayers.find(item => item.name.replace(/\s/g, "") === oldSelected.id).team_position;
         let newIndex = teamPlayers.map(item => item.name.replace(/\s/g, "")).indexOf(selected.id);
         let oldIndex = teamPlayers.map(item => item.name.replace(/\s/g, "")).indexOf(oldSelected.id);
-        teamPlayers[newIndex].position = oldPos;
-        teamPlayers[oldIndex].position = newPos;
+        teamPlayers[newIndex].team_position = oldPos;
+        teamPlayers[oldIndex].team_position = newPos;
         let tempObj = teamPlayers[newIndex];
         teamPlayers[newIndex] = teamPlayers[oldIndex];
         teamPlayers[oldIndex] = tempObj;
@@ -85,9 +88,9 @@ const tableRowSelect = (event, team) => {
 
 const sortPlayerArray = (array, team) => {
     return array.filter(data => data.club === team).sort((a,b) => {
-        const teamOrder = ['G','D','M','F','S'];
-        let fa = teamOrder.indexOf(a.position),
-            fb = teamOrder.indexOf(b.position);
+        const teamOrder = ['G','D','M','F','S','R'];
+        let fa = teamOrder.indexOf(a.team_position),
+            fb = teamOrder.indexOf(b.team_position);
         if (fa < fb) return -1;
         if (fa > fb) return 1;
         return 0

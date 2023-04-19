@@ -4,8 +4,9 @@ let away = [];
 // loadGameData = (team) => {
 loadGameData = (homeTeam, awayTeam) => {
     // if team === temp[0].home ? : ; //for colouring scorers
-    home.push(players.filter(item => item.club === homeTeam && item.position !== "S"));
-    away.push(players.filter(item => item.club === awayTeam && item.position !== "S"));
+    console.log(players.filter(item => item.club === homeTeam && item.team_position !== "S" && item.team_position !== "R"));
+    home.push(players.filter(item => item.club === homeTeam && item.team_position !== "S" && item.team_position !== "R"));
+    away.push(players.filter(item => item.club === awayTeam && item.team_position !== "S" && item.team_position !== "R"));
     if (homeTeam === teamSelected || awayTeam === teamSelected) {
         document.getElementById("homeTeam").innerText = homeTeam;
         document.getElementById("awayTeam").innerText = awayTeam;
@@ -54,6 +55,8 @@ const startGame = document.getElementById("startGame");
 startGame.addEventListener("click", () => {
     gameObj = [];
     results = []; //remove this later, adding round
+
+    console.log(home);
     startGame.classList.add("hide");
     for (let i = 0; i < home.length; i++) {
         gameObj.push(game(home[i][0].club, home[i], away[i][0].club, away[i]));

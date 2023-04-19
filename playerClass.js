@@ -2,15 +2,16 @@
 // will hold stats objects
 
 class Player {
-    constructor(id, name, age, club, position, rating, value, wage, joined, until) {
+    constructor(id, name, age, rating, club, value, wage, team_position, position, joined, until) {
         this.id = id,
-        this.name = name;
-        this.age = age;
-        this.club = club;
-        this.position = position,
+        this.name = name,
+        this.age = age,
         this.rating = rating,
+        this.club = club;
         this.value = value,
         this.wage = wage,
+        this.team_position = "S",
+        this.position = position,
         this.joined = joined,
         this.until = until
         this.stats = {

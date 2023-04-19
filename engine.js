@@ -47,18 +47,11 @@ pickPlayers = (num,arr,team) => {
     let tempHome = [...arr];
     let maxArray = num - 1;
     let chosen = [];
-    let temp = [...tempHome];
-    // console.log(num);
-    // console.log(team);
-    // console.log(temp);
     for (let i = 0; i < num; i++) {
         let tempRand = Math.floor(Math.random() * maxArray) + 1;
         if (tempRand === maxArray) {
             tempRand -= 1;
         }
-        // console.log(JSON.stringify(tempRand));
-        // console.log(JSON.stringify(tempHome));
-        // console.log(JSON.stringify(tempHome[tempRand]));
         chosen.push(tempHome[tempRand]);
         tempHome.splice(tempRand,1);
         maxArray--;
@@ -72,7 +65,6 @@ pickPlayers = (num,arr,team) => {
 // get total score for attack play
 getTotal = (arr) => {
     let total = 0;
-    // console.log(arr);
     arr.forEach(number => {
         console.log(arr);
         total += number.rating;

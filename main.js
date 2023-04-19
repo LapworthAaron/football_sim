@@ -55,9 +55,7 @@ fetch("./teams.json")
                     const indexVal = players.indexOf(posArray[i]);
                     players[indexVal].team_position = item;
                 }
-                
             });
-            // console.log(players.filter(element => element.club === data[i].team));
         };
         
     });

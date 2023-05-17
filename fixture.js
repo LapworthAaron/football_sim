@@ -1,10 +1,10 @@
 const seasonGenerator = () => {
     const leagueArr = ["epl","champ","efl1","efl2"];
 
-    leagueArr.forEach(item => eachLeague(item))
+    leagueArr.forEach(item => fixturesLeague(item))
 };
 
-const eachLeague = (leagueName) => {
+const fixturesLeague = (leagueName) => {
     const league = teams.filter(item => item.league === leagueName).sort(function(a, b){return 0.5 - Math.random()});
     
     let newLeague = league;
@@ -20,8 +20,10 @@ const eachLeague = (leagueName) => {
         toggleTeamPos(newLeague);
     };
 
+    let rounds = 0;
+    leagueName === 'epl' ? rounds = 19 : rounds = 23;
     const reverse = LeagueFixtureArr.map(item => {
-        return {"round":item.round + 19, "home":item.away, "away":item.home};
+        return {"round":item.round + rounds, "home":item.away, "away":item.home};
     });
 
     fixtures.push(...LeagueFixtureArr);

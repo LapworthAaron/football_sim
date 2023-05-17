@@ -2,7 +2,6 @@
 // will contain team objects
 
 const showLeague = () => {
-    // console.log(teams);
     if(document.getElementById('leagueBody')) {
         document.getElementById('leagueBody').remove();
     }
@@ -11,7 +10,9 @@ const showLeague = () => {
     leagueBody.setAttribute("id", "leagueBody");
     table.append(leagueBody);
 
-    const epl = teams.filter(item => item.league === 'epl').sort((a,b) => {
+    const yourLeague = teams.filter(item => item.team === teamSelected)[0].league;
+
+    const leagueList = teams.filter(item => item.league === yourLeague).sort((a,b) => {
         if (a.points - b.points !== 0) {
             return b.points - a.points;
         } else if ((a.scored - a.conceded) - (b.scored - b.conceded) !== 0) {
@@ -24,9 +25,9 @@ const showLeague = () => {
     })
 
     let counter = 1;
-    epl.forEach(item => {
+    leagueList.forEach(item => {
         let tr = document.createElement('tr');
-        tr.setAttribute('id', "leagueBody");
+        tr.setAttribute('id', `league_${counter}`);
         leagueBody.append(tr);
 
         const position = document.createElement('td');

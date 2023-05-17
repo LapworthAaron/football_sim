@@ -2,6 +2,13 @@
     display: none;
 }
 
+* {
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+
+/***************************************/
+/* Main pages and general styling START */
 body {
     margin: 0;
     background: #85997D;
@@ -43,7 +50,11 @@ button {
     flex-direction: column;
     align-items: center;
 }
+/* Main pages and default styling END */
+/***************************************/
 
+/***************************************/
+/* Game playing page START */
 #time {
     text-align: center;
     color: white;
@@ -78,11 +89,27 @@ button {
     margin-top: 0;
 }
 
+.myTeam {
+    color: #70e000;
+    font-weight: bolder;
+}
+
+.opponent {
+    color: red;
+    font-weight: bolder;
+}
+
+/* Game playing page END */
+/***************************************/
+
+/***************************************/
+/* Team selection page START */
 #teamTable {
     background-color: white;
     color: black;
     text-align: center;
     border-radius: 5px;
+    margin: auto;
 }
 
 #teamTable th {
@@ -95,6 +122,56 @@ button {
     cursor: pointer;
 }
 
+#teamTable tr:hover {
+    background-color: #D6EEEE;
+}
+
 .selected {
     background-color: yellow;
 }
+/* Team selection page END */
+/***************************************/
+
+/***************************************/
+/* League Table page START */
+#leagueTable {
+    background-color: none;
+    margin: auto;
+}
+
+thead tr th {
+    background-color: #3A86FF;
+    border-radius: 5%;
+    color: black;
+    padding: 2px 15px;
+}
+
+#leagueTable tbody tr {
+    background-color: #8338EC;
+}
+
+#leagueTable tbody tr td{
+    text-align: center;
+    color: white;
+    border-radius: 10px 0 10px 0;
+}
+
+#leagueTable tbody #league_1 {
+    background-color: #FFBE0B;
+}
+
+#leagueTable tbody #league_2,
+#leagueTable tbody #league_3,
+#leagueTable tbody #league_4 {
+    background-color: #FB5607;
+}
+
+#leagueTable tbody #league_18,
+#leagueTable tbody #league_19,
+#leagueTable tbody #league_20 {
+    background-color: red;
+}
+
+
+/* League Table page END */
+/***************************************/

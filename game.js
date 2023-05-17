@@ -1,15 +1,24 @@
 let home = [];
 let away = [];
 
-// loadGameData = (team) => {
 loadGameData = (homeTeam, awayTeam) => {
-    // if team === temp[0].home ? : ; //for colouring scorers
-    console.log(players.filter(item => item.club === homeTeam && item.team_position !== "S" && item.team_position !== "R"));
     home.push(players.filter(item => item.club === homeTeam && item.team_position !== "S" && item.team_position !== "R"));
     away.push(players.filter(item => item.club === awayTeam && item.team_position !== "S" && item.team_position !== "R"));
     if (homeTeam === teamSelected || awayTeam === teamSelected) {
         document.getElementById("homeTeam").innerText = homeTeam;
         document.getElementById("awayTeam").innerText = awayTeam;
+    }
+    if (homeTeam === teamSelected) {
+        document.getElementById("awayScorer").classList.remove("myTeam");
+        document.getElementById("homeScorer").classList.remove("opponent");
+        document.getElementById("homeScorer").classList.add("myTeam");
+        document.getElementById("awayScorer").classList.add("opponent");
+    }
+    if (awayTeam === teamSelected) {
+        document.getElementById("awayScorer").classList.remove("opponent");
+        document.getElementById("homeScorer").classList.remove("myTeam");
+        document.getElementById("awayScorer").classList.add("myTeam");
+        document.getElementById("homeScorer").classList.add("opponent")
     }
 }
 
@@ -43,7 +52,6 @@ runGame = (homeObj, awayObj) => {
         });
         count++;
     }, 100);
-
     const nextResultsBtn = document.getElementById("nextResultsBtn");
     nextResultsBtn.addEventListener("click", () => resetGameScreen());
 }
@@ -55,8 +63,6 @@ const startGame = document.getElementById("startGame");
 startGame.addEventListener("click", () => {
     gameObj = [];
     results = []; //remove this later, adding round
-
-    console.log(home);
     startGame.classList.add("hide");
     for (let i = 0; i < home.length; i++) {
         gameObj.push(game(home[i][0].club, home[i], away[i][0].club, away[i]));

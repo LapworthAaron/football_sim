@@ -1,7 +1,5 @@
 const playerVolume = [
-    {players: 0, lower: 0,
-         upper: 0.05},
-    {players: 1, lower: 0.050000000000000001,
+    {players: 1, lower: 0,
          upper: 0.15},
     {players: 2, lower: 0.150000000000000001,
          upper: 0.3},
@@ -47,7 +45,7 @@ pickPlayers = (num,arr,team) => {
     let tempHome = [...arr];
     let maxArray = num - 1;
     let chosen = [];
-    for (let i = 0; i < num; i++) {
+    for (let i = 1; i < num; i++) {
         let tempRand = Math.floor(Math.random() * maxArray) + 1;
         if (tempRand === maxArray) {
             tempRand -= 1;
@@ -62,20 +60,19 @@ pickPlayers = (num,arr,team) => {
     return chosen;
 }
 
-// get total score for attack play
+// get total rating score for array of players
 getTotal = (arr) => {
     let total = 0;
     arr.forEach(number => {
-        console.log(arr);
         total += number.rating;
     })
     return total;
 }
 
-// decide if goal - if att score is 10% more than def score
+// decide if goal - if att score is 60% more than def score
 score = (att, def, team) => {
     let lastScored = "";
-    if (att > def * 1.55) {
+    if (att > def * 1.60) {
         lastScored = team;
         return "GOAL";
         

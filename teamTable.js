@@ -90,9 +90,13 @@ const sortPlayerArray = (array, team) => {
     return array.filter(data => data.club === team).sort((a,b) => {
         const teamOrder = ['G','D','M','F','S','R'];
         let fa = teamOrder.indexOf(a.team_position),
-            fb = teamOrder.indexOf(b.team_position);
+            fb = teamOrder.indexOf(b.team_position),
+            fc = teamOrder.indexOf(a.position),
+            fd = teamOrder.indexOf(b.position);
         if (fa < fb) return -1;
         if (fa > fb) return 1;
+        if (fc < fd) return -1;
+        if (fd > fd) return 1;
         return 0
     })
 }

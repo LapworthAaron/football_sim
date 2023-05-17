@@ -53,11 +53,13 @@ fetch("./teams.json")
                 const posNumber = formationsArry[randNum][item];
                 for (let i = 0; i < posNumber; i++) {
                     const indexVal = players.indexOf(posArray[i]);
+                    if (!players[indexVal].team_position) {
+                        consolg.log(players[indexVal]);
+                    }
                     players[indexVal].team_position = item;
                 }
             });
         };
-        
     });
 
 const startBtn = document.getElementById('start-game');

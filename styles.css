@@ -6,9 +6,6 @@
     font-family: Arial, Helvetica, sans-serif;    
 }
 
-
-/***************************************/
-/* Main pages and general styling START */
 body {
     margin: 0;
     background: #85997D;
@@ -42,13 +39,42 @@ button {
     background-color: white;
     font-size: 2rem;
     color: blue;
+    width: 300px;
 }
+
+/***************************************/
+/* Landing pages and Main pages START */
 
 #buttonBox {
     display:flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+#teamSel_container {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+}
+
+#teamSel_container select {
+    width: 300px;
+    margin: 10px 0;
+    height: 35px;
+    font-size: 1.5rem;
+}
+
+#mainMenu_btns {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
 }
 /* Main pages and default styling END */
 /***************************************/
@@ -109,7 +135,6 @@ button {
     color: black;
     text-align: center;
     border-radius: 5px;
-    margin: auto;
 }
 
 #teamTable th {
@@ -129,6 +154,21 @@ button {
 .selected {
     background-color: yellow;
 }
+
+.tableButtonContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content: center;
+   
+}
+
+#formationButtons {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Team selection page END */
 /***************************************/
 
@@ -174,4 +214,79 @@ thead tr th {
 
 
 /* League Table page END */
+/***************************************/
+
+/***************************************/
+/* Results Table page START */
+
+#resultsTable {
+    width: 50vw;
+    max-width: 600px;
+    min-width: 300px;
+    margin: auto;
+}
+
+#results_container {
+    display: flex;
+    flex-direction: column;
+}
+
+#resultsBody tr {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 40% 10% 10% 40%;
+    grid-template-areas:
+    "home homeScore awayScore away";
+    font-weight: bolder;
+}
+
+#resultsMainBtn {
+    margin: 15px auto;
+}
+
+.awayTd {
+    margin-left: auto;
+}
+
+.scoreNum {
+    margin: 0 auto;
+}
+
+/* Results Table page END */
+/***************************************/
+
+/***************************************/
+/* Schedule Table page START */
+#fixture_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#roundHeading {
+    width: 300px;
+    text-align: center;
+}
+
+.fixture_container {
+    display: grid;
+    width: 600px;
+    margin: 0 auto;
+    grid-template-rows: 100%;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-areas:
+    "homeTeam versus awayTeam";
+    font-weight: bolder;
+}
+
+.awayTeam {
+    margin-left: auto;
+}
+
+.versus {
+    margin: auto auto;
+}
+
+
+/* Schedule Table page END */
 /***************************************/

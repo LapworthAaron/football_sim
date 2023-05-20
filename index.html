@@ -22,22 +22,24 @@
         </section>
 
         <section id="team-selection" class="section-box hide">
-            <h2>Select a team:</h2>
-            <select name="leagues" id="league-dropdown">
-                <option value="">--Leagues--</option>
-                <option value="epl">Premier League</option>
-                <option value="champ">Championship</option>
-                <option value="efl1">League 1</option>
-                <option value="efl2">League 2</option>
-            </select>
-            <select name="teams" id="team-dropdown">
-                <option value="">--Teams--</option>
-            </select>
-            <button type="button" id="teamBtn">Finish</button>
+            <div id="teamSel_container">
+                <h2>Select a team:</h2>
+                <select name="leagues" id="league-dropdown">
+                    <option value="">--Leagues--</option>
+                    <option value="epl">Premier League</option>
+                    <option value="champ">Championship</option>
+                    <option value="efl1">League 1</option>
+                    <option value="efl2">League 2</option>
+                </select>
+                <select name="teams" id="team-dropdown">
+                    <option value="">--Teams--</option>
+                </select>
+                <button type="button" id="teamBtn">Finish</button>
+            </div>
         </section>
 
         <section id="main-menu" class="section-box hide">
-            <div>
+            <div id="mainMenu_btns">
                 <h2>Team: <span id="team-name"></span></h2>
                 <button type="button" id="teamPageBtn">Team</button>
                 <button type="button" id="leaguePageBtn">League Table</button>
@@ -46,25 +48,31 @@
                 <button type="button" id="historyPageBtn">Manager History</button>
                 <button type="button" id="nextGameBtn">Next Game</button>
             </div>
-            <div>
-
-            </div>
         </section>
 
         <section id="team-page" class="hide">
+            <div class="tableButtonContainer">
+                <table id="teamTable">
+                    <thead id="tableHeader">
+                        <tr>
+                            <th>Name</th>
+                            <th>Selection</th>
+                            <th>Pos</th>
+                            <th>Rating</th>
+                            <th>Value</th>
+                            <th>Wage</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div id="formationButtons">
+                    <button id="442">4-4-2</button>
+                    <button id="352">3-5-2</button>
+                    <button id="532">5-3-2</button>
+                    <button id="451">4-5-1</button>
+                    <button id="541">5-4-1</button>
+                </div>
+            </div>
             <button type="button" id="teamMainBtn">Main Menu</button>
-            <table id="teamTable">
-                <thead id="tableHeader">
-                    <tr>
-                        <th>Name</th>
-                        <th>Selection</th>
-                        <th>Pos</th>
-                        <th>Rating</th>
-                        <th>Value</th>
-                        <th>Wage</th>
-                    </tr>
-                </thead>
-            </table>
         </section>
 
         <section id="league-page" class="hide">
@@ -90,10 +98,19 @@
             <button type="button" id="transferMainBtn">Main Menu</button>
         </section>
         <section id="schedule-page" class="hide">
-            <button type="button" id="scheduleMainBtn">Main Menu</button>
+            <div id="fixture_page">
+                <div id="schedule_container">                   
+                </div>
+                <button type="button" id="scheduleMainBtn">Main Menu</button>
+            </div>
         </section>
         <section id="history-page" class="hide">
-            <button type="button" id="historyMainBtn">Main Menu</button>
+            <div>
+                <div>
+
+                </div>
+                <button type="button" id="historyMainBtn">Main Menu</button>
+            </div>
         </section>
 
         <section id="game-screen" class="hide">
@@ -118,11 +135,13 @@
             </div>
         </section>
         <section id="results-screen" class="hide">
-            <table id="resultsTable">
-                <thead id="resultsHeader">
-                </thead>
-            </table>
-            <button type="button" id="resultsMainBtn">Main Menu</button>
+            <div id="results_container">
+                <table id="resultsTable">
+                    <thead id="resultsHeader">
+                    </thead>
+                </table>
+                <button type="button" id="resultsMainBtn">Main Menu</button>
+            </div>
         </section>
     </main>
 

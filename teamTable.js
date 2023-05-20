@@ -52,6 +52,19 @@ const teamView = (team) => {
     });
 
     teamBody.addEventListener('click', (event) => tableRowSelect(event, team));
+    
+    let form442 = document.getElementById("442");
+    let form352 = document.getElementById("352");
+    let form532 = document.getElementById("532");
+    let form451 = document.getElementById("451");
+    let form541 = document.getElementById("541");
+
+    const formArray = [form442, form352, form532, form451, form541];
+    for (let i = 0; i < formArray.length; i++) {
+        formArray[i].addEventListener('click', () => {
+            formationChange(formArray[i].id);
+        });
+    };
 }
 
 const tableRowSelect = (event, team) => {
@@ -100,4 +113,45 @@ const sortPlayerArray = (array, team) => {
         return 0
     })
 }
-    
+
+const formationChange = (formation) => {
+    const formationsArray = {
+        "442": {"G":1,"D":4,"M":4,"F":2},
+        "532": {"G":1,"D":5,"M":3,"F":2},
+        "352": {"G":1,"D":3,"M":5,"F":2},
+        "451": {"G":1,"D":4,"M":5,"F":1},
+        "541": {"G":1,"D":5,"M":4,"F":1}
+    };
+    let temp = players.filter(element => element.club === teamSelected);
+    temp.sort((a,b) => {
+        const teamOrder = ['G','D','M','F','S','R'];
+        let fa = teamOrder.indexOf(a.team_position),
+            fb = teamOrder.indexOf(b.team_position),
+            fc = teamOrder.indexOf(a.position),
+            fd = teamOrder.indexOf(b.position);
+        if (fa < fb) return -1;
+        if (fa > fb) return 1;
+        if (fc < fd) return -1;
+        if (fd > fd) return 1;
+        return 0
+    });
+
+    let counter = 0;
+    ["G","D","M","F"].forEach(item => {
+        for (let i = counter; i < counter + formationsArray[formation][item]; i++) {
+            temp[i].team_position = item;
+        }
+        counter += formationsArray[formation][item];
+    });
+
+    for (let i = 0; i < temp.length; i++) {
+        const indexVal = players.indexOf(temp[i]);
+        if (!players[indexVal].team_position) {
+        }
+        players[indexVal].team_position = temp[i].team_position;
+        let playerHtml = document.getElementById(temp[i].name.replace(/\s/g, ""));
+        playerHtml.childNodes[1].innerText = temp[i].team_position;
+    }
+}  
+
+        

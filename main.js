@@ -3,8 +3,19 @@ let teams = [];
 let teamSelected = "";
 let fixtures = [];
 let round = 1;
+const formationsArray = [
+    {"G":1,"D":4,"M":4,"F":2},
+    {"G":1,"D":5,"M":3,"F":2},
+    {"G":1,"D":3,"M":5,"F":2},
+    {"G":1,"D":4,"M":5,"F":1},
+    {"G":1,"D":5,"M":4,"F":1}
+];
+const playerFile = "./playerList.json";
+const teamFile = "./teams.json";
 
-fetch("./playerList.json")
+async function getData(pFile, tFile) {
+
+    await fetch(pFile)
     .then(response => {
         return response.json();
     })
@@ -24,24 +35,20 @@ fetch("./playerList.json")
                 data[i].until
             ));
         }
-    });
+    }).catch((error) => {
+        console.log(error);
+        console.log("players.json fetch went wrong")
+    });  
 
-fetch("./teams.json")
+    await fetch(tFile)
     .then(response => {
         return response.json();
     })
-    .then(data => {
-        const formationsArry = [
-            {"G":1,"D":4,"M":4,"F":2},
-            {"G":1,"D":5,"M":3,"F":2},
-            {"G":1,"D":3,"M":5,"F":2},
-            {"G":1,"D":4,"M":5,"F":1},
-            {"G":1,"D":5,"M":4,"F":1}
-        ];
-        for (let i = 0; i < data.length; i++) {
+    .then(json => {
+        for (let i = 0; i < json.length; i++) {
             const randNum = Math.floor(Math.random() * 5);
-            teams.push(new Team(i, data[i].league, data[i].team, 2022));
-            let temp = players.filter(element => element.club === data[i].team);
+            teams.push(new Team(i, json[i].league, json[i].team, 2022));
+            let temp = players.filter(element => element.club === json[i].team);
             ["G","D","M","F"].forEach(item => {
                 let posArray = temp.filter(element => element.position === item).sort((a,b) => {
                     let fa = a.rating,
@@ -50,17 +57,24 @@ fetch("./teams.json")
                     if (fa > fb) return -1;
                     return 0
                 });
-                const posNumber = formationsArry[randNum][item];
+                const posNumber = formationsArray[randNum][item];
                 for (let i = 0; i < posNumber; i++) {
                     const indexVal = players.indexOf(posArray[i]);
                     if (!players[indexVal].team_position) {
-                        consolg.log(players[indexVal]);
                     }
                     players[indexVal].team_position = item;
                 }
             });
         };
-    });
+    }).catch((error) => {
+        console.log(error);
+        console.log("teams.json fetch went wrong")
+    });       
+};
+
+getData(playerFile, teamFile);
+
+
 
 const startBtn = document.getElementById('start-game');
 startBtn.addEventListener("click", () => toggle('landing-page','team-selection'));

@@ -19,12 +19,15 @@ const showResults = () => {
         tr.append(hometeam);
         const homescore = document.createElement('td');
         homescore.innerText = item.homeScore;
+        homescore.classList.add("scoreNum");
         tr.append(homescore);
         const awayscore = document.createElement('td');
         awayscore.innerText = item.awayScore;
+        awayscore.classList.add("scoreNum");
         tr.append(awayscore);
         const awayteam = document.createElement('td');
         awayteam.innerText = item.away;
+        awayteam.classList.add("awayTd");
         tr.append(awayteam);
     })
 }
